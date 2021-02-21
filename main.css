@@ -1,0 +1,254 @@
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  box-sizing: inherit;
+  font-family: PingFangTC-Regular;
+}
+body {
+  width: 100%;
+  box-sizing: border-box;
+}
+main {
+  width: 1024px;
+  margin: 0 auto;
+}
+.purple {
+  background-color: #8a82cc;
+}
+.pink {
+  background-color: #ffa782;
+}
+.yellow {
+  background-color: #f5d105;
+}
+.blue {
+  background-color: #559ac8;
+}
+.loading {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  z-index: 100;
+  font-size: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header {
+  width: 100%;
+  height: 380px;
+  background-image: url(img/Hero.png);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.header__title {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-size: 40px;
+  letter-spacing: 4px;
+}
+.header__box {
+  position: relative;
+  flex-grow: 1;
+}
+.header__box::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background-image: url(img/icons_down.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 22px;
+  right: 6px;
+}
+.header__select {
+  width: 452px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 3px solid #fff;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.header__select:focus {
+  outline: none;
+}
+.popular {
+  width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  transform: translateY(-30px);
+  background-color: #fff;
+}
+.popular__title {
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+.popular__btn {
+  display: inline-block;
+  margin: 0 20px;
+  padding: 11px 34px;
+  font-size: 20px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.popular__btn:focus {
+  outline: none;
+}
+.line {
+  width: 900px;
+  margin: 0 auto;
+  border-top: 1px dashed #559ac8;
+  position: relative;
+}
+.line__box {
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  background-color: white;
+  border: 2px solid #559ac8;
+  border-radius: 50%;
+  text-align: center;
+  left: 50%;
+  top: -10px;
+  transform: translateX(-50%);
+}
+.line__icon {
+  height: 10px;
+  width: 12px;
+}
+.tour__title {
+  margin: 50px 0 30px 0;
+  text-align: center;
+}
+.tour__list {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  position: relative;
+}
+.tour____list-totop {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  right: -30px;
+  bottom: 20px;
+  cursor: pointer;
+}
+.tour__item {
+  width: 49%;
+  margin-bottom: 20px;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+.tour__item p {
+  font-size: 16px;
+  line-height: 20px;
+}
+.tour__imgbox {
+  background-image: url(https://khh.travel/image/18453/640x480);
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 155px;
+  padding: 10px 20px;
+  background-color: wheat;
+  color: #fff;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.tour__name {
+  font-size: 24px;
+}
+.tour__txtbox {
+  height: calc(100%-155px);
+  padding: 10px 20px;
+  position: relative;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.tour__dis {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+.tour__dis img {
+  width: 15px;
+  height: auto;
+  margin-right: 10px;
+}
+.tour__dis:nth-last-child(2) {
+  margin-bottom: 0;
+}
+.tour__dis:last-child {
+  position: absolute;
+  right: 20px;
+  bottom: 0;
+}
+.tour__pagelist {
+  display: flex;
+  margin: 0 auto;
+  margin-top: 100px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+.tour__pagelist__item {
+  border: 1px solid black;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+.tour__pagelist____link {
+  text-decoration: none;
+  color: black;
+}
+.btnbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.nowpage {
+  text-align: center;
+}
+.footer {
+  background-color: #559ac8;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.footer h2 {
+  margin-bottom: 20px;
+  color: #fff;
+}
+.footer h3 {
+  color: #ffd366;
+}
