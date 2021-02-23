@@ -2,7 +2,7 @@
 let listDom = document.querySelector('.tour__list');
 let selectDom = document.querySelector('.header__select');
 let titleDom =document.querySelector('.tour__title');
-let hotArea = document.querySelectorAll('.popular__btn');
+let hotArea = document.querySelector('.popular');
 let pageDom = document.querySelector('.tour__pagelist');
 let nextDom =document.querySelector('.next');
 let prevDom =document.querySelector('.prev');
@@ -22,9 +22,7 @@ pageDom.addEventListener('click',switchPage);
 nextDom.addEventListener('click',togglePage);
 prevDom.addEventListener('click',togglePage);
 listDom.addEventListener('click',totop)
-hotArea.forEach((items)=>{
-  items.addEventListener('click',showSelect)
-})
+hotArea.addEventListener('click',showSelect);
 
 //make request(new)
 function fetchReq(){
@@ -76,10 +74,10 @@ function pageList(data,page){
   currentPage = page;
   prevDom.removeAttribute("disabled");
   nextDom.removeAttribute("disabled");
-  if (currentPage > maxPage){
+  if (currentPage > maxPage || currentPage === maxPage){
     currentPage = maxPage ;
     nextDom.setAttribute("disabled", "");
-  }else if(currentPage < minPage){
+  }else if(currentPage < minPage || currentPage === minPage){
     currentPage = minPage;
     prevDom.setAttribute("disabled", "");
   }
@@ -134,9 +132,15 @@ function pageList(data,page){
 function pageBtn(page){
   let str = ``;
   for(i = 1; i < page + 1 ; i++){
-    str += `
-    <li class='tour__pagelist__item'><a href='#' class='tour__pagelist____link' data-index=${i}>${i}</a></li>
-    `
+    if (i === currentPage){
+      str += `
+      <li class='tour__pagelist__item'><a href='#' class='tour__pagelist____link' data-index=${i} style='background-color:#ccc'>${i}</a></li>
+      `
+    }else{
+      str += `
+      <li class='tour__pagelist__item'><a href='#' class='tour__pagelist____link' data-index=${i}>${i}</a></li>
+      `
+    }
   }
   pageDom.innerHTML = str;
 }
@@ -144,26 +148,28 @@ function pageBtn(page){
 //換頁數
 function switchPage(e){
   e.preventDefault();
-  if(e.target.nodeName !== 'A'){return}
-  currentPage = e.target.dataset.index
-  pageList(datafilter,currentPage)
+  if(e.target.nodeName !== 'A'){return};
+  currentPage = e.target.dataset.index * 1;
+  pageList(datafilter,currentPage);
+  window.scroll(0,500);
 }
 
 //看選擇的區域
 function showSelect(e){
   e.preventDefault();
-  let selectArea = e.target.value;
-  if (selectArea === '全區'){
-    datafilter = data
-  }else if(selectArea){
-    datafilter = data.filter((items)=>{
-      return getArea(items.Zipcode) === selectArea;
-    })
-  }
-  // showList(datafilter)
-
-  titleDom.innerHTML = selectArea || '全區';
-  pageList(datafilter,currentPage);
+  if(e.target.nodeName === 'BUTTON' || e.target.nodeName === 'SELECT'){
+    let selectArea = e.target.value;
+    if (selectArea === '全區'){
+      datafilter = data
+    }else if(selectArea){
+      datafilter = data.filter((items)=>{
+        return getArea(items.Zipcode) === selectArea;
+      })
+    }
+    titleDom.innerHTML = selectArea || '全區';
+    selectDom.value = e.target.value;
+    pageList(datafilter,currentPage);
+  };
 }
 
 //判別區域
