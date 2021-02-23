@@ -218,15 +218,16 @@ main {
   justify-content: center;
 }
 .tour__pagelist__item {
-  border: 1px solid black;
-  height: 30px;
-  width: 30px;
-  line-height: 30px;
   text-align: center;
 }
 .tour__pagelist____link {
   text-decoration: none;
   color: black;
+  border: 1px solid black;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  display: inline-block;
 }
 .btnbox {
   display: flex;
